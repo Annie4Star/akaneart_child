@@ -27,13 +27,9 @@ Essential components: Navigation tabs, image, title, materials, completion date(
 Page Layout:
 
 Image **Title**
-
 Image *Materials*
-
 Image *Category or Origin*
-
 Image Long description
-
 Image Socials
 
 ##Featured Products##
