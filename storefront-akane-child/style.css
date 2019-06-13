@@ -12,6 +12,8 @@ Text Domain:  storefront-child-theme
 Tags:         e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options, editor-style
 */
 
+/*Header tyling, originally the 'Customized CSS' in Appearance.*/
+
 header {background-size: cover; background-repeat: no-repeat;
 background-position: top;}
 
