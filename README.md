@@ -18,7 +18,7 @@ Gallery goal:
 
 Maintain gallery grid
 
-When a visitor clicks on a thumbnail it opens an overlay (see "GalleryGoalSocsAdded.jpg")
+When a visitor clicks on a thumbnail it opens an overlay (see "[GalleryGoalSocsAdded.jpg](GalleryGoalSocsAdded.jpg)")
 
 Both sides should have previous and next tabs similar to product page tabs
 
