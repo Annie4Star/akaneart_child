@@ -11,3 +11,62 @@ License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  storefront-child-theme
 Tags:         e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options, editor-style
 */
+
+header {background-size: cover; background-repeat: no-repeat;
+background-position: top;}
+
+.main-navigation ul >li > a {font-size: 1.15em;
+	text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black}
+
+.main-navigation ul > li > ul > li {font-size: 1em;}
+
+.actioncall {
+	display: inline-block;
+	color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+	width: max-content;
+	margin: 1.125em;
+	/*margin-left: 0;
+	margin-right:auto;
+	margin-bottom: 1em;*/
+	border: 5px solid #91415d;
+	border-radius: 5px;
+	padding: .13em .5em;
+	background-color:#351822;
+}
+
+@media only screen and (min-device-width: 240px) and (max-device-width: 700px) {
+	header {background-size: cover;}
+	.main-navigation ul >li > a {font-size: 1em;
+	text-shadow:
+   -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px 1px 0 black,
+     1px 1px 0 black;
+	background-color: black;
+  padding: 2px;}
+
+.main-navigation ul > li > ul > li {background-color: black; font-size: 1em;}
+
+.gallery .gallery-item
+{float:none;
+display: inline-block;}
+
+.actioncall {
+	display: block;
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	border: 3px solid #91415d;
+	border-radius: 5px;
+	padding: .5em .75em;
+	margin: 2px;
+}
+}
