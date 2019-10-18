@@ -18,7 +18,7 @@ Gallery goal:
 
 Maintain gallery grid
 
-When a visitor clicks on a thumbnail it opens an overlay (see "GalleryGoalSocsAdded.jpg")
+When a visitor clicks on a thumbnail it opens an overlay (see "[GalleryGoalSocsAdded.jpg](GalleryGoalSocsAdded.jpg)")
 
 Both sides should have previous and next tabs similar to product page tabs
 
@@ -26,15 +26,11 @@ Essential components: Navigation tabs, image, title, materials, completion date(
 
 Page Layout:
 
-Image **Title**
-
-Image *Materials*
-
-Image *Category or Origin*
-
-Image Long description
-
-Image Socials
+Image **Title**<br/>
+Image *Materials*<br/>
+Image *Category or Origin*<br/>
+Image Long description<br/>
+Image Socials<br/>
 
 ##Featured Products##
 
