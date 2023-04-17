@@ -1,39 +1,28 @@
-Developing a Storefront based child theme for WordPress.
+# Storefront Child Theme
 
-Main goals are changing the page flow of Woocommerce main and category pages.  Other goal is to create an overlays on the gallery page.
+The StoreFront Child Theme is a starter blank child theme for WooThemes StoreFront WooCommerce theme.
 
-Page flow for store pages:
+## Installation
 
-Header
+1. Download the child theme from it's GitHub Repository [Download StoreFront Blank Child Theme](https://github.com/stuartduff/storefront-child-theme).
+2. Goto WordPress > Appearance > Themes > Add New.
+2. Click Upload Theme and Choose File, then select the theme's .zip file. Click Install Now.
+3. Click Activate to use your new theme right away.
 
-Focus Image
+## Usage
 
-Maybe a small blurb/short description
+This child theme is designed to be used as a starter theme for the WooCommerce StoreFront theme which you can download for free below.
 
-Products
+* [Download WooCommerce StoreFront Theme](https://wordpress.org/themes/storefront/)
+* [StoreFront Documentation](http://docs.woocommerce.com/documentation/themes/storefront/)
+* [StoreFront Child Themes](https://woocommerce.com/product-category/themes/storefront-child-theme-themes/)
+* [StoreFront Extensions](https://woocommerce.com/product-category/storefront-extensions/)
 
-Page content, static or in dropdown.
+Custom PHP that you write should be added to the child themes functions.php file whilst any custom CSS should be added to the child themes style.css file.
 
-Gallery goal:
+There is also a style.scss file within the /assets/sass/ folder that can be used if you wish to write [SASS - Syntactically Awesome Style Sheets](http://sass-lang.com/) based styles which can then be compiled into the style.css file using an app like [CodeKit](https://incident57.com/codekit/) for OSX or [PrePros](https://prepros.io/) for Windows.
 
-Maintain gallery grid
+The blank child theme itself has no functionality and if you would like to learn more about child themes for WordPress see this documentation below.
 
-When a visitor clicks on a thumbnail it opens an overlay (see "[GalleryGoalSocsAdded.jpg](GalleryGoalSocsAdded.jpg)")
+* [WordPress Child Themes](https://codex.wordpress.org/Child_Themes)
 
-Both sides should have previous and next tabs similar to product page tabs
-
-Essential components: Navigation tabs, image, title, materials, completion date(s), long description, any related products.
-
-Page Layout:
-
-Image **Title**<br/>
-Image *Materials*<br/>
-Image *Category or Origin*<br/>
-Image Long description<br/>
-Image Socials<br/>
-
-##Featured Products##
-
-Product Product Product
-
-Possibly include an **X** to return to the main gallery page.

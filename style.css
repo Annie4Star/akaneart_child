@@ -1,0 +1,108 @@
+/*
+Theme Name:   	Storefront AkaneArt Child Theme
+Theme URI:    	https://github.com/stuartduff/storefront-child-theme Update when I go back on Git at some point.
+Author:       	Ann-Marie Foerster
+Author URI:     https://annmariefoerster.com
+Template:     	storefront
+Description:  	This is a child theme to customize the WooThemes StoreFront theme.  Customized for akaneart.com.
+Version:      	1.0.0
+License:      	GNU General Public License v2 or later
+License URI:  	http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  	storefront
+Tags:         	black, white, light, two-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+Storefront is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+FontAwesome License: SIL Open Font License - http://scripts.sil.org/OFL
+Images License: GNU General Public License v2 or later
+*/
+/*
+ * Add your own custom css below this text.
+ */
+/*@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Montserrat&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Montserrat&family=Patrick+Hand&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+}
+.site-header {padding-top: 1rem;}
+.content-area {margin-bottom:0em;}
+.site-main {margin-bottom:0em;}
+.site-footer {padding: 1em 0 1em;}
+.col-full {
+    max-width: 95em;
+}
+    .wp-block-columns {
+    margin-bottom: 0;
+}
+.site-branding .site-title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 3.65em;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Patrick Hand', cursive;
+}
+.actioncall {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+    .actioncall button {
+        font-family: 'Patrick Hand', cursive;
+        letter-spacing: 0.075em;
+        color: #ccfffc;
+        font-size: 1.3rem;
+        margin: 1.5rem;
+        border-radius: 5px;
+        padding: .2rem .7rem;
+        background-color: #6f2a47;
+    }
+gallery-icon img {
+    width: 100%;
+    height: auto;
+}
+.hentry .entry-header {
+    border-bottom: none;
+    margin-bottom: 1em;
+}
+
+footer .widget-title {
+    font-family: 'Patrick Hand', cursive;
+}
+.wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor, .wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor:hover, .wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor:active, .wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor:visited, .wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor svg {
+    color: white;
+}
+@media only screen and (min-device-width: 240px) and (max-device-width: 1080px) {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.75rem;
+    }
+    .hentry .entry-content div.wp-block-image:not(.block-editor-media-placeholder) .alignright, .editor-styles-wrapper div.wp-block-image:not(.block-editor-media-placeholder) .alignright {margin-left:2em;
+    }
+    .wp-block-image .alignright.size-full.is-resized {
+        clear: both;
+        float: none;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .gallery .gallery-item{float:none; display: inline-block;}
+	.gallery .gallery-item img {width: 90%; height: auto;}	
+	.gallery .gallery-item figcaption {display: none;}
+    .actioncall {display: block;}
+    .actioncall button {
+        display: block;
+	text-align: center;
+	font-size: 1.25rem;
+	font-weight: bold;
+	border-radius: 5px;
+	padding: .5em .75em;
+	margin: 2px;
+	width: 100%;}
+}
