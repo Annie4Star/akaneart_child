@@ -74,7 +74,7 @@ function artpost_taxonomy() {
         'show_admin_column' => true,
         'show_tagcloud'     => false,
         'query_var'         => true,
-        'rewrite'           => [ 'slug' => '/', 'with_front' => false ]
+        'rewrite'           => array('slug' => 'work/type', 'with_front' => false)
     );
     register_taxonomy( 'project', [ 'artwork_post' ], $args );
 }
@@ -103,7 +103,7 @@ function material_taxonomy() {
         'show_admin_column' => true,
         'show_tagcloud'     => false,
         'query_var'         => true,
-        'rewrite'           => [ 'slug' => '/', 'with_front' => false ]
+        'rewrite'           => array('slug' => 'work/type', 'with_front' => false)
     );
     register_taxonomy( 'material', [ 'artwork_post' ], $args );
 }
@@ -132,7 +132,7 @@ function software_taxonomy() {
         'show_admin_column' => true,
         'show_tagcloud'     => false,
         'query_var'         => true,
-        'rewrite'           => [ 'slug' => '/', 'with_front' => false ]
+        'rewrite'           => array('slug' => 'work/type', 'with_front' => false)
     );
     register_taxonomy( 'software', [ 'artwork_post' ], $args );
 }
