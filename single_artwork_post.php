@@ -49,9 +49,6 @@ get_header(); ?>
                 }
                 ?>
                 <br />
-                <strong>Watch it: </strong>
-                <?php echo esc_html( get_post_meta( get_the_ID(), 'YT_video', true) ); ?>
-                <br />
             </header>
             <div class="entry-conent"><?php the_content(); ?></div>
         </article>

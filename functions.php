@@ -22,6 +22,7 @@ function sf_child_theme_dequeue_style() {
 /** 
  * Note: DO NOT! alter or remove the code above this text and only add your custom PHP functions below this text.
  */
+
 function create_artwork_post() {
     register_post_type( 'artwork_post',
     array(
@@ -141,6 +142,7 @@ add_action( 'init', 'software_taxonomy' );
 add_filter( 'template_include', 'include_template_function', 1 );
 
 add_action( 'admin_init', 'my_admin' );
+
 function my_admin() {
     add_meta_box( 'artwork_post_meta_box',
         'Artwork Details',
@@ -148,8 +150,7 @@ function my_admin() {
         'artwork_post', 'normal', 'high'
     );
 }
-?>
-<?php
+
 function display_artwork_post_meta_box( $artwork_post) {
     //Retrieve details of the artwork post like year and materials
     $release_time = esc_html( get_post_meta ($artwork_post->ID, 'release_time', true) );
@@ -158,10 +159,6 @@ function display_artwork_post_meta_box( $artwork_post) {
     <tr>
         <td style="width: 100%">Completed:</td>
         <td><input type="text" size="80" name="artwork_post_release_time" value="<?php echo $release_time; ?>" /></td>
-    </tr>
-    <tr>
-        <td style="width: 100%">Watch it:</td>
-        <td><input type="text" size="80" name="artwork_post_YT_video" value="<?php echo $YT_video; ?>" /></td>
     </tr>
 </table>
 <?php
@@ -174,11 +171,13 @@ function add_artowrk_post_fields( $artwork_post_id, $artwork_post ) {
         if ( isset( $_POST['artwork_post_release_time']) && $_POST['artwork_post_release_time'] != '' ) {
             update_post_meta( $artwork_post_id, 'release_time', $_POST['artwork_post_release_time'] );
         }
-        if ( isset( $_POST['artwork_post_YT_video']) && $_POST['artwork_post_YT_video'] != '' ) {
-            update_post_meta( $artwork_post_id, 'YT_video', $_POST['artwork_post_YT_video'] );
-        }
     }
 }
+function custom_theme_features() {
+    add_theme_support( 'post-thumbnails', array( 'post', 'artwork_post' ) );
+    add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'custom_theme_features' );
 function include_template_function( $template_path) {
     if ( get_post_type() == 'artwork_post' ) {
         if ( is_single() ) {
