@@ -150,7 +150,6 @@ function my_admin() {
         'artwork_post', 'normal', 'high'
     );
 }
-
 function display_artwork_post_meta_box( $artwork_post) {
     //Retrieve details of the artwork post like year and materials
     $release_time = esc_html( get_post_meta ($artwork_post->ID, 'release_time', true) );
@@ -172,10 +171,6 @@ function add_artowrk_post_fields( $artwork_post_id, $artwork_post ) {
             update_post_meta( $artwork_post_id, 'release_time', $_POST['artwork_post_release_time'] );
         }
     }
-}
-function custom_theme_features() {
-    add_theme_support( 'post-thumbnails', array( 'post', 'artwork_post' ) );
-    add_theme_support( 'title-tag' );
 }
 add_action( 'after_setup_theme', 'custom_theme_features' );
 function include_template_function( $template_path) {

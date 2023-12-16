@@ -11,8 +11,10 @@ get_header(); ?>
     <?php while ( $loop->have_posts() ) : $loop->the_post();?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header class="entry-header">
-                <!-- Display featured image in left aligned floating div -->
-                <div style="float: left; margin-right: 2em">
+                
+            </header>
+            <!-- Display featured image in left aligned floating div -->
+            <div style="float: left; margin-right: 2em">
                     <?php the_post_thumbnail( array (700, 700) ); ?>
                 </div>
                 <div style="font-family: 'Amatic SC', cursive; font-size: 3em; line-height: 1; padding-bottom: .25em "><?php the_title(); ?></div>
@@ -49,7 +51,6 @@ get_header(); ?>
                 }
                 ?>
                 <br />
-            </header>
             <div class="entry-conent"><?php the_content(); ?></div>
         </article>
 <?php endwhile; ?>

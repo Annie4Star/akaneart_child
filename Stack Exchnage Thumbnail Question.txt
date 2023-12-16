@@ -1,0 +1,142 @@
+Hi!
+
+I've been working in WAMP 3.2.3 to make a child theme off of Woocommerce's Storefront, and add some interaction in my gallery page by displaying a custom post type in modals.  I have been able to make the custom post and taxonomy.  PHP in use is 7.4.9.  This thing has been a journey because I have more of a background in HTML and CSS but I can follow some javascript and php tutorials.  The hardest part of any of them was figuring out where to put the code between function.php, style, or a new php file altogether.
+
+I don't know if this is because the site is currently on WAMP instead of live, but I'm having an issue with the post_thumbnail.  My custom post type is for displaying artwork with commentary, and I have the illustration as the Featured Image of the post.  It displays in the preview, but not on the actual post page or the modal.  All I see is blank space where the image should be.  [I tried looking at this question][1] to no avail.  I don't know if it's me or the age of the question.  Knowing me, it's something as simple as I have the theme support in the wrong spot or something.
+
+This is the create and add code for the custom post inside the functions.php file inside of my custom theme.  I removed the taxonomy setup to condense.
+```
+function create_artwork_post() {
+    register_post_type( 'artwork_post',
+    array(
+        'labels' => array (
+            'name' => 'Artwork',
+            'add_new' => 'Add New',
+            'add_new_item' => 'Add New Artwork',
+            'edit' => 'Edit',
+            'edit_item' => "Edit Artwork",
+            'new_item' => 'New Artwork',
+            'view' => 'View',
+            'view_item' => 'View Artwork',
+            'search_items' => 'Search Artwork',
+            'not_found' => 'No Artwork found',
+            'not_found_in_trash' => 'No Artwork found in Trash',
+            'parent' => 'Parent Artwork'
+        ),
+        'public' => true,
+        'menu_position' => 15,
+        'has_archive' => true,
+        'rewrite' => array( 'slug' => 'artwork'), //produces a custom slug term
+        'show_in_rest' => true,
+        'supports' => array( 'title', 'editor', 'featured-image', 'custom-fields', 'author', 'thumbnail', 'comments', 'revisions', 'post-formats', 'admin_column' )
+    )
+    );
+}
+add_action( 'init', 'create_artwork_post');
+//Taxonomy code was here
+
+add_filter( 'template_include', 'include_template_function', 1 );
+
+add_action( 'admin_init', 'my_admin' );
+
+function my_admin() {
+    add_meta_box( 'artwork_post_meta_box',
+        'Artwork Details',
+        'display_artwork_post_meta_box',
+        'artwork_post', 'normal', 'high'
+    );
+}
+
+function display_artwork_post_meta_box( $artwork_post) {
+    //Retrieve details of the artwork post like year and materials
+    $release_time = esc_html( get_post_meta ($artwork_post->ID, 'release_time', true) );
+?>
+<table>
+    <tr>
+        <td style="width: 100%">Completed:</td>
+        <td><input type="text" size="80" name="artwork_post_release_time" value="<?php echo $release_time; ?>" /></td>
+    </tr>
+</table>
+<?php
+}
+add_action( 'save_post', 'add_artowrk_post_fields', 10, 2 );
+function add_artowrk_post_fields( $artwork_post_id, $artwork_post ) {
+    //Check post type for artwork
+    if ( $artwork_post->post_type == 'artwork_post' ) {
+        //Store data in post meta table if present in post data
+        if ( isset( $_POST['artwork_post_release_time']) && $_POST['artwork_post_release_time'] != '' ) {
+            update_post_meta( $artwork_post_id, 'release_time', $_POST['artwork_post_release_time'] );
+        }
+    }
+}
+function custom_theme_features() {
+    add_theme_support( 'post-thumbnails', array( 'post', 'artwork_post' ) );
+    add_theme_support( 'title-tag' );
+}
+```
+And this is the php code for the custom post itself (setting up the page).  The thumbnail hook is in the header.
+```
+<?php
+/*Template Name: New Template
+*/
+get_header(); ?>
+<div id="primary">
+    <div id="content" role="main">
+    <?php
+    $mypost = array( 'post_type' => 'artwork_post', );
+    $loop = new WP_Query( $mypost );
+    ?>
+    <?php while ( $loop->have_posts() ) : $loop->the_post();?>
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <header class="entry-header">
+                <!-- Display featured image in left aligned floating div -->
+                <div style="float: left; margin-right: 2em">
+                    <?php the_post_thumbnail( array (700, 700) ); ?>
+                </div>
+                <div style="font-family: 'Amatic SC', cursive; font-size: 3em; line-height: 1; padding-bottom: .25em "><?php the_title(); ?></div>
+                <strong>Completed: </strong>
+                <?php echo esc_html( get_post_meta( get_the_ID(), 'release_time', true) ); ?>
+                <br />
+                <strong>Project: </strong>
+                <?php
+                $terms = wp_get_post_terms($post->ID, 'project');
+                if ( Is_array( $terms ) ) {
+                    foreach ($terms as $term) {
+                    echo $term->name;
+                    }
+                }
+                ?>
+                <br />
+                <strong>Materials: </strong>
+                <?php
+                $terms = wp_get_post_terms($post->ID, 'material', $before = '', $sep = ', ', $after = '' );
+                if ( Is_array( $terms ) ) {
+                    foreach ($terms as $term) {
+                    echo $term->name, $before, $sep, $after;
+                    }
+                }
+                ?>
+                <br />
+                <strong>Software: </strong>
+                <?php
+                $terms = wp_get_post_terms($post->ID, 'software', $before = '', $sep = ', ', $after = '');
+                if ( Is_array( $terms ) ) {
+                    foreach ($terms as $term) {
+                    echo $term->name, $before, $sep, $after;
+                    }
+                }
+                ?>
+                <br />
+            </header>
+            <div class="entry-conent"><?php the_content(); ?></div>
+        </article>
+<?php endwhile; ?>
+</div>
+</div>
+<?php wp_reset_query(); ?>
+```
+I feel like it would be better in the long run to use featured images instead of having them placed as a normal image as part of a grid.  [A mostly current copy all of my child theme's coding is on its github page][2].
+
+
+  [1]: https://wordpress.stackexchange.com/questions/51897/how-come-featured-image-isnt-showing-up-in-my-custom-post-type?newreg=aff9a08b397440568ae0bc64824d1c11
+  [2]: https://github.com/Annie4Star/akaneart_child
